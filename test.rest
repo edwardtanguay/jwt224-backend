@@ -30,7 +30,7 @@ content-type: application/json
 	"password": "123"
 }
 
-### GET LOGGED IN USER GET 
+### GET CURRENT USER
 GET {{url}}/currentuser
 
 ### LOGOUT
