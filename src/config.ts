@@ -1,2 +1,2 @@
 export const port = 3511;
-export const secondsTillTimeout = 10;
+export const secondsTillTimeout = 20;
