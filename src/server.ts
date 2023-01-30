@@ -1,16 +1,8 @@
-import session from 'express-session';
 import express from 'express';
 import cors from 'cors';
 import * as model from './model.js';
 import dotenv from 'dotenv';
-import cookieParser from 'cookie-parser';
 import * as config from './config.js';
-
-declare module 'express-session' {
-	export interface SessionData {
-		user: { [key: string]: any };
-	}
-}
 
 dotenv.config();
 
@@ -20,22 +12,8 @@ app.use(cors({
 	methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD'],
 	credentials: true
 }));
-app.use(cookieParser());
 app.use(express.json());
 const port = config.port;
-
-app.use(
-	session({
-		resave: true,
-		saveUninitialized: true,
-		secret: process.env.SESSION_SECRET,
-		cookie: {
-			httpOnly: true,
-			sameSite: 'lax',
-			secure: false
-		}
-	})
-);
 
 const authorizeUser = (req: express.Request, res: express.Response, next: express.NextFunction) => {
 	if (req.session.user) {
