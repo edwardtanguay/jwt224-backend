@@ -28,9 +28,9 @@ export const getApiInstructions = () => {
 		color: orange;
 	}
 </style>
-<h1>SQLite Site API</h1>
+<h1>Test API</h1>
 <ul>
-	<li><a href="/test">/test</a> - shows date/time as test</li>
+	<li><a href="/welcomemessage">/welcomemessage</a> - shows message</li>
 </ul>
 	`;
 }
