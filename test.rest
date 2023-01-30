@@ -9,6 +9,7 @@ GET {{url}}/welcomemessage
 ### SAVE WELCOME MESSAGE
 POST {{url}}/welcomemessage
 content-type: application/json
+authorization: Bearer hallo
 
 {
 	"welcomeMessage": "Welcome to this site. (CHANGED)"
