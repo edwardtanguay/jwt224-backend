@@ -31,7 +31,6 @@ content-type: application/json
 }
 
 ### GET CURRENT USER
-GET {{url}}/currentuser
-
-### LOGOUT
-GET {{url}}/logout
+POST {{url}}/currentuser
+content-type: application/json
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImZpcnN0TmFtZSI6IkFkbWluIiwibGFzdE5hbWUiOiJVc2VyIiwiYWNjZXNzR3JvdXBzIjpbImxvZ2dlZEluVXNlcnMiLCJhZG1pbnMiXX0sImlhdCI6MTY3NTA3NTE2MywiZXhwIjoxNjc1MDc1MTgzfQ.2pZtEP0hjjcTHzcX0rKXAxxhatQcVFIqyhlxE93E8cI
