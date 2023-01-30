@@ -1,4 +1,4 @@
-@url = http://localhost:3511
+@url = http://localhost:3512
 
 ### ROOT
 GET {{url}}
@@ -9,10 +9,10 @@ GET {{url}}/welcomemessage
 ### SAVE WELCOME MESSAGE
 POST {{url}}/welcomemessage
 content-type: application/json
-authorization: Bearer hallo
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImZpcnN0TmFtZSI6IkFkbWluIiwibGFzdE5hbWUiOiJVc2VyIiwiYWNjZXNzR3JvdXBzIjpbImxvZ2dlZEluVXNlcnMiLCJhZG1pbnMiXX0sImlhdCI6MTY3NTA3NzI5MiwiZXhwIjoxNjc1MDc3MzEyfQ.5fGa1-XQnyPemD_16qDyJx5QTdJpSBug5OnmUQMegms
 
 {
-	"welcomeMessage": "Welcome to this site. (CHANGED)"
+	"welcomeMessage": "Welcome to this site. (CHANGED33x3)"
 }
 
 ### BAD LOGIN 
@@ -34,4 +34,4 @@ content-type: application/json
 ### GET CURRENT USER
 POST {{url}}/currentuser
 content-type: application/json
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImZpcnN0TmFtZSI6IkFkbWluIiwibGFzdE5hbWUiOiJVc2VyIiwiYWNjZXNzR3JvdXBzIjpbImxvZ2dlZEluVXNlcnMiLCJhZG1pbnMiXX0sImlhdCI6MTY3NTA3NTE2MywiZXhwIjoxNjc1MDc1MTgzfQ.2pZtEP0hjjcTHzcX0rKXAxxhatQcVFIqyhlxE93E8cI
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImZpcnN0TmFtZSI6IkFkbWluIiwibGFzdE5hbWUiOiJVc2VyIiwiYWNjZXNzR3JvdXBzIjpbImxvZ2dlZEluVXNlcnMiLCJhZG1pbnMiXX0sImlhdCI6MTY3NTA3NjI0NCwiZXhwIjoxNjc1MDc2MjY0fQ.vhXrzIiBvTJwMPO_xqAFdHFSaGTt6ub4DguwLXx4XbA

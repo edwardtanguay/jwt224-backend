@@ -8,7 +8,7 @@ import jwt from 'jsonwebtoken';
 dotenv.config();
 
 interface CustomRequest extends Request {
-	token: string;
+	user: any;
 }
 
 const decodeJwt = (token: string) => {
@@ -21,10 +21,25 @@ const decodeJwt = (token: string) => {
 const verifyToken = (req: express.Request, res: express.Response, next: express.NextFunction) => {
 	const bearerHeader = req.headers['authorization'];
 	if (typeof bearerHeader !== 'undefined') {
+
+		// get token
 		const bearer = bearerHeader.split(' ');
 		const bearerToken = bearer[1];
-		(req as unknown as CustomRequest).token = bearerToken;
-		next();
+
+		// verify token
+		jwt.verify(bearerToken, process.env.SESSION_SECRET, (err) => {
+			if (err) {
+				res.sendStatus(403);
+			} else {
+				const data = decodeJwt(bearerToken);
+				if (data.user) {
+					(req as unknown as CustomRequest).user = data.user;
+					next();
+				} else {
+					res.sendStatus(403);
+				}
+			}
+		});
 	} else {
 		res.sendStatus(403);
 	}
@@ -47,11 +62,13 @@ app.get('/welcomemessage', (req: express.Request, res: express.Response) => {
 	res.send(model.getWelcomeMessage());
 })
 
-// TODO: fix since hacker can enter with any token
 app.post('/welcomemessage', verifyToken, (req: express.Request, res: express.Response) => {
 	const { welcomeMessage } = req.body;
 	model.saveWelcomeMessage(welcomeMessage);
-	res.send({});
+	res.send({
+		status: "success",
+		message: `new welcome message is: ${welcomeMessage}`
+	});
 })
 
 app.post('/login', (req: express.Request, res: express.Response) => {
@@ -76,16 +93,9 @@ app.post('/login', (req: express.Request, res: express.Response) => {
 });
 
 app.post('/currentuser', verifyToken, (req: express.Request, res: express.Response) => {
-    jwt.verify((req as unknown as CustomRequest).token, process.env.SESSION_SECRET, (err) => {
-        if (err) {
-            res.sendStatus(403);
-        } else {
-            const data = decodeJwt((req as unknown as CustomRequest).token);
-            res.json({
-                user: data.user
-            });
-        }
-    });
+	res.json({
+		user: (req as unknown as CustomRequest).user
+	});
 });
 
 app.listen(port, () => {
