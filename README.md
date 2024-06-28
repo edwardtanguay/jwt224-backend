@@ -26,6 +26,12 @@ This is the minimal starting point for a basic React-frontend with Node/Express-
 
 - go to your projects directory
 - create a directory called `site001`
+- **.env**
+
+```
+ADMIN_PASSWORD = 123
+SESSION_SECRET = iwjefij
+```
 
 ## install backend
 
